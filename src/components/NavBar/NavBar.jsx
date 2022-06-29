@@ -20,7 +20,14 @@ function NavBar() {
         <Toolbar className={classes.toolbar}>
           {/* Menu Button For Mobile Devices */}
           {isMobile && (
-          <IconButton color="inherit" edge="start" style={{ outline: 'none' }} onClick={() => {}} className={classes.menuButton}>
+          <IconButton
+            color="inherit"
+            edge="start"
+            style={{ outline: 'none' }}
+            // Sets mobile state to be the opposite than it was for the sidebar
+            onClick={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
+            className={classes.menuButton}
+          >
             <Menu />
           </IconButton>
           )}
@@ -60,6 +67,7 @@ function NavBar() {
               variant="temporary"
               anchor="right"
               open={mobileOpen}
+              onClose={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
               classes={{ paper: classes.drawerPaper }}
               ModalProps={{ keepMounted: true }}
             >

@@ -47,7 +47,7 @@ function Sidebar({ setMobileOpen }) {
       </List>
       <Divider />
       <List>
-        <ListSubheader>Catagories</ListSubheader>
+        <ListSubheader>Genres</ListSubheader>
         {demoCatagories.map(({ label, value }) => (
           <Link key={value} className={classes.links} to="/">
             <ListItem onClick={() => {}} button>
