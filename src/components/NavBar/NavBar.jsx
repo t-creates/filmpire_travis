@@ -8,7 +8,7 @@ import Search from '../Search/Search';
 import { Sidebar } from '..';
 import useStyles from './styles';
 
-function NavBar() {
+const NavBar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const classes = useStyles();
   const isMobile = useMediaQuery('(max-width:600px)');
@@ -26,7 +26,7 @@ function NavBar() {
             edge="start"
             style={{ outline: 'none' }}
             // Sets mobile state to be the opposite than it was for the sidebar
-            onClick={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
+            onClick={() => { return setMobileOpen((prevMobileOpen) => { return !prevMobileOpen; }); }}
             className={classes.menuButton}
           >
             <Menu />
@@ -68,7 +68,7 @@ function NavBar() {
               variant="temporary"
               anchor="right"
               open={mobileOpen}
-              onClose={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
+              onClose={() => { return setMobileOpen((prevMobileOpen) => { return !prevMobileOpen; }); }}
               classes={{ paper: classes.drawerPaper }}
               ModalProps={{ keepMounted: true }}
             >
@@ -83,6 +83,6 @@ function NavBar() {
       </div>
     </>
   );
-}
+};
 
 export default NavBar;
