@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 import useStyles from '../styles';
 
-function Search() {
+const Search = () => {
   const classes = useStyles();
   const [query, setQuery] = useState('');
   console.log('Search');
@@ -20,7 +20,7 @@ function Search() {
       <TextField
         onKeyPress={handleKeyPress}
         value={query}
-        onChangeCapture={(e) => setQuery(e.target.value)}
+        onChangeCapture={(e) => { return setQuery(e.target.value); }}
         variant="standard"
         InputProps={{
           className: classes.input,
@@ -33,6 +33,6 @@ function Search() {
       />
     </div>
   );
-}
+};
 
 export default Search;
