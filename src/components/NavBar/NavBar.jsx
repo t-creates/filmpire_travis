@@ -26,7 +26,7 @@ const NavBar = () => {
             edge="start"
             style={{ outline: 'none' }}
             // Sets mobile state to be the opposite than it was for the sidebar
-            onClick={() => { return setMobileOpen((prevMobileOpen) => { return !prevMobileOpen; }); }}
+            onClick={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
             className={classes.menuButton}
           >
             <Menu />
@@ -41,7 +41,7 @@ const NavBar = () => {
           <div>
             {/* Login Button With Profile Picture (Avatar) */}
             {!isAuthenticated ? (
-              <Button color="inherit" onClick={() => {}}>
+              <Button color="inherit" onClick={fetchToken}>
                 {/* &nbsp refers to space after login */}
                 Login &nbsp; <AccountCircle />
               </Button>
@@ -68,7 +68,7 @@ const NavBar = () => {
               variant="temporary"
               anchor="right"
               open={mobileOpen}
-              onClose={() => { return setMobileOpen((prevMobileOpen) => { return !prevMobileOpen; }); }}
+              onClose={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
               classes={{ paper: classes.drawerPaper }}
               ModalProps={{ keepMounted: true }}
             >
