@@ -18,7 +18,7 @@ module.exports = {
     'react',
   ],
   rules: {
-    'arrow-body-style': ['error', 'always'],
+    'arrow-body-style': ['error', 'as-needed'],
     'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
     'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
     'react/react-in-jsx-scope': 0,

@@ -20,7 +20,7 @@ const blueLogo = 'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48
 const redLogo = 'https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png';
 
 const Sidebar = ({ setMobileOpen }) => {
-  const { genreIdOrCategoryName } = useSelector((state) => { return state.currentGenreOrCatagory; });
+  const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCatagory);
   const theme = useTheme();
   const classes = useStyles();
   const { data, isFetching } = useGetGenresQuery();
@@ -34,18 +34,16 @@ const Sidebar = ({ setMobileOpen }) => {
       <Divider />
       <List>
         <ListSubheader>Catagories</ListSubheader>
-        {catagories.map(({ label, value }) => {
-          return (
-            <Link key={value} className={classes.links} to="/">
-              <ListItem onClick={() => { return dispatch(selectGenreOrCategory(value)); }} button>
-                <ListItemIcon>
-                  <img src={genreIcons[label.toLowerCase()]} className={classes.genreImages} height={30} />
-                </ListItemIcon>
-                <ListItemText primary={label} />
-              </ListItem>
-            </Link>
-          );
-        })}
+        {catagories.map(({ label, value }) => (
+          <Link key={value} className={classes.links} to="/">
+            <ListItem onClick={() => dispatch(selectGenreOrCategory(value))} button>
+              <ListItemIcon>
+                <img src={genreIcons[label.toLowerCase()]} className={classes.genreImages} height={30} />
+              </ListItemIcon>
+              <ListItemText primary={label} />
+            </ListItem>
+          </Link>
+        ))}
       </List>
       <Divider />
       <List>
@@ -54,18 +52,16 @@ const Sidebar = ({ setMobileOpen }) => {
           <Box display="flex" justifyContent="center">
             <CircularProgress />
           </Box>
-        ) : data.genres.map(({ name, id }) => {
-          return (
-            <Link key={name} className={classes.links} to="/">
-              <ListItem onClick={() => { return dispatch(selectGenreOrCategory(id)); }} button>
-                <ListItemIcon>
-                  <img src={genreIcons[name.toLowerCase()]} className={classes.genreImages} height={30} />
-                </ListItemIcon>
-                <ListItemText primary={name} />
-              </ListItem>
-            </Link>
-          );
-        })}
+        ) : data.genres.map(({ name, id }) => (
+          <Link key={name} className={classes.links} to="/">
+            <ListItem onClick={() => dispatch(selectGenreOrCategory(id))} button>
+              <ListItemIcon>
+                <img src={genreIcons[name.toLowerCase()]} className={classes.genreImages} height={30} />
+              </ListItemIcon>
+              <ListItemText primary={name} />
+            </ListItem>
+          </Link>
+        ))}
       </List>
     </>
   );

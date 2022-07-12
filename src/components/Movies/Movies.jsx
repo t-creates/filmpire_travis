@@ -6,10 +6,10 @@ import { useGetMoviesQuery } from '../../services/api';
 import MovieList from '../MovieList/MovieList';
 import { selectGenreOrCategory } from '../../features/currentGenreOrCatagory';
 
-function Movies() {
+const Movies = () => {
   const [page, setPage] = useState(1);
-  const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCatagory);
-  const { data, error, isFetching } = useGetMoviesQuery({ genreIdOrCategoryName, page });
+  const { genreIdOrCategoryName, searchQuery } = useSelector((state) => state.currentGenreOrCatagory);
+  const { data, error, isFetching } = useGetMoviesQuery({ genreIdOrCategoryName, page, searchQuery });
 
   // Loading
   if (isFetching) {
@@ -43,6 +43,6 @@ function Movies() {
       <MovieList movies={data} />
     </div>
   );
-}
+};
 
 export default Movies;
