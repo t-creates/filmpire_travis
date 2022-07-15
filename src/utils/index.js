@@ -9,7 +9,7 @@ const moviesApi = axios.create({
 
 export const fetchToken = async () => {
   try {
-
+    const response = await moviesApi.get('/authentication/token/new');
   } catch (error) {
 
   }
